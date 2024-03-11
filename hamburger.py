@@ -1,4 +1,4 @@
-class Hamburger:
+class BasitHamburger(Hamburger):
     def get_cost(self):
         pass
 
@@ -12,19 +12,19 @@ class BasitHamburger(Hamburger):
     def get_ingredients(self):
         return "Köfte,Ekmek"
     
-class HamburgerDecorator(Hamburger):
-    def __init__(self,hamburger):
-        self.hamburger = hamburger
+class HamburgerDecorator(BasitHamburger):
+    def __init__(self,basit_hamburger):
+        self.basit_hamburger = basit_hamburger
 
     def get_cost(self):
-        return self.hamburger.get_cost()
+        return self.basit_hamburger.get_cost()
     
     def get_ingredients(self):
-        return self.hamburger.get_ingredients()
+        return self.basit_hamburger.get_ingredients()
     
 class Peynirli (HamburgerDecorator):
-    def __init__(self,hamburger):
-        super().__init__(hamburger)
+    def __init__(self,basit_hamburger):
+        super().__init__(basit_hamburger)
 
     def get_cost(self):
         return super().get_cost() + 8
@@ -33,8 +33,8 @@ class Peynirli (HamburgerDecorator):
         return super().get_ingredients() + ",Peynir"
     
 class SosluHamburger(HamburgerDecorator):
-    def __init__(self,hamburger):
-        super().__init__(hamburger)
+    def __init__(self,basit_hamburger):
+        super().__init__(basit_hamburger)
 
     def get_cost(self):
         return super().get_cost() + 5
@@ -43,8 +43,8 @@ class SosluHamburger(HamburgerDecorator):
         return super().get_ingredients() + ",Sos"
     
 class KaramelizeSoğanHamburger(HamburgerDecorator):
-    def __init__(self,hamburger):
-        super().__init__(hamburger)
+    def __init__(self,basit_hamburger):
+        super().__init__(basit_hamburger)
 
     def get_cost(self):
         return super().get_cost() + 10
@@ -53,8 +53,8 @@ class KaramelizeSoğanHamburger(HamburgerDecorator):
         return super().get_ingredients() + ",Karamelize Soğan"
     
 class Kola(HamburgerDecorator):
-    def __init__(self,hamburger):
-        super().__init__(hamburger)
+    def __init__(self,basit_hamburger):
+        super().__init__(basit_hamburger)
 
     def get_cost(self):
         return super().get_cost() + 25
@@ -63,8 +63,8 @@ class Kola(HamburgerDecorator):
         return super().get_ingredients() + ",Kola"
     
 class Salata(HamburgerDecorator):
-    def __init__(self,hamburger):
-        super().__init__(hamburger)
+    def __init__(self,basit_hamburger):
+        super().__init__(basit_hamburger)
 
     def get_cost(self):
         return super().get_cost() + 30
@@ -73,8 +73,8 @@ class Salata(HamburgerDecorator):
         return super().get_ingredients() + ",Salata"
     
 class Sogan(HamburgerDecorator):
-    def __init__(self,hamburger):
-        super().__init__(hamburger)
+    def __init__(self,basit_hamburger):
+        super().__init__(basit_hamburger    )
 
     def get_cost(self):
         return super().get_cost() + 2
@@ -83,8 +83,8 @@ class Sogan(HamburgerDecorator):
         return super().get_ingredients() + ",Sogan"
     
 def yazdir(hamburger):
-    print("İçindekiler: {}".format(hamburger.get_ingredients()))
-    print("Fiyat: {}".format(hamburger.get_cost()))
+    print("İçindekiler: {}".format(basit_hamburger.get_ingredients()))
+    print("Fiyat: {}".format(basit_hamburger.get_cost()))
 
 
 # Örnek kullanım
